@@ -5,18 +5,39 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import axios from 'axios'
+
 
 const Index = () => {
-  const [demoText, setDemoText] = useState("By accepting this agreement, you hereby waive all rights to pursue legal action against the company for any damages, including but not limited to consequential, incidental, or punitive damages, regardless of the company's negligence or misconduct.");
+  const [demoText, setDemoText] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
+  const [resultData, setresultData] = useState("");
 
-  const handleDemoAnalysis = () => {
-    setIsAnalyzing(true);
-    setTimeout(() => {
-      setIsAnalyzing(false);
-      setShowAnalysis(true);
-    }, 2000);
+  console.log(demoText);
+
+
+  const handleDemoAnalysis = async () => {
+    console.log("Loading...")
+    setShowAnalysis(true);
+    const response = await axios({
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
+      method: "post",
+      data: {
+        "contents" : [
+          {
+            "parts": [
+              {
+                "text" : "Simplyfy this text" + demoText
+              }
+            ]
+          }
+        ]
+      }
+    })
+
+    const result = response.data.candidates[0].content.parts[0].text;
+    setresultData(result);
   };
 
   const features = [
@@ -176,40 +197,7 @@ const Index = () => {
                   <CardDescription>Plain English explanation</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {showAnalysis ? (
-                    <div className="space-y-4">
-                      <div className="bg-white p-4 rounded-lg border-l-4 border-green-500">
-                        <h4 className="font-semibold text-green-800 mb-2">What this means:</h4>
-                        <p className="text-gray-700">
-                          You're giving up your right to sue the company, even if they make serious mistakes or act negligently that cause you harm.
-                        </p>
-                      </div>
-                      <div className="bg-red-50 p-4 rounded-lg border-l-4 border-red-500">
-                        <div className="flex items-center mb-2">
-                          <AlertTriangle className="h-5 w-5 text-red-500 mr-2" />
-                          <h4 className="font-semibold text-red-800">High Risk Detected</h4>
-                        </div>
-                        <p className="text-red-700">
-                          This clause removes important legal protections. Consider negotiating or seeking legal advice.
-                        </p>
-                      </div>
-                      <div className="flex gap-2">
-                        <Badge variant="destructive">Liability Waiver</Badge>
-                        <Badge variant="outline">Legal Rights</Badge>
-                      </div>
-                    </div>
-                  ) : (
-                    <div className="min-h-[200px] flex items-center justify-center text-gray-500">
-                      {isAnalyzing ? (
-                        <div className="text-center">
-                          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500 mx-auto mb-4"></div>
-                          <p>Analyzing legal text...</p>
-                        </div>
-                      ) : (
-                        <p>Click "Analyze This Text" to see the magic happen!</p>
-                      )}
-                    </div>
-                  )}
+                  {showAnalysis ? (<p> {resultData} </p>) : ( <p> No data</p>) }
                 </CardContent>
               </Card>
             </div>
