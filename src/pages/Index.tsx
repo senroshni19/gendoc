@@ -35,7 +35,7 @@ const Index = () => {
         ]
       }
     })
- console.log("hello world");
+ 
     const result = response.data.candidates[0].content.parts[0].text;
     const resultData = await axios({
       url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
