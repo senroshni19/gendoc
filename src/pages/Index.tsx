@@ -37,9 +37,25 @@ const Index = () => {
     })
 
     const result = response.data.candidates[0].content.parts[0].text;
-    setresultData(result);
+    const resultData = await axios({
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
+      method: "post",
+      data: {
+        "contents" : [
+          {
+            "parts": [
+              {
+                "text" : "What are the risks in this text? " + result
+              }
+            ]
+          }
+        ]
+      } 
+    })
+    const resultDataValue = resultData.data.candidates[0].content.parts[0].text;
+    setresultData(resultDataValue);
   };
-
+ 
   const features = [
     {
       icon: <FileText className="h-8 w-8 text-blue-500" />,
