@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
+import axios from 'axios'; 
 import { Upload, FileText, AlertTriangle, Share2, CheckCircle, Users, Zap, Shield, ArrowRight, Download, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
-import axios from 'axios'
-
 
 const Index = () => {
   const [demoText, setDemoText] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
-  const [resultData, setresultData] = useState("");
-
-  console.log(demoText);
-
+  const [resultData, setresultData] = useState<string>("");
 
   const handleDemoAnalysis = async () => {
     console.log("Loading...")
