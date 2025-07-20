@@ -1,4 +1,3 @@
-
 import React, { useState } from 'react';
 import { Upload, FileText, AlertTriangle, Share2, CheckCircle, Users, Zap, Shield, ArrowRight, Download, Eye } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -28,34 +27,18 @@ const Index = () => {
           {
             "parts": [
               {
-                "text" : "Simplyfy this text" + demoText 
+                "text" : "Simplyfy this text" + demoText
               }
             ]
           }
         ]
       }
     })
- 
+
     const result = response.data.candidates[0].content.parts[0].text;
-    const resultData = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
-      method: "post",
-      data: {
-        "contents" : [
-          {
-            "parts": [
-              {
-                "text" : "What are the risks in this text? " + result
-              }
-            ]
-          }
-        ]
-      } 
-    })
-    const resultDataValue = resultData.data.candidates[0].content.parts[0].text;
-    setresultData(resultDataValue);
+    setresultData(result);
   };
- 
+
   const features = [
     {
       icon: <FileText className="h-8 w-8 text-blue-500" />,
@@ -68,7 +51,7 @@ const Index = () => {
       icon: <AlertTriangle className="h-8 w-8 text-orange-500" />,
       title: "Risk Detection",
       description: "Automatically identifies and highlights potentially problematic clauses like auto-renewal terms and liability issues.",
-      example: "⚠️ Risky clause detected",
+      example: "⚠ Risky clause detected",
       hoverText: "'You waive all rights to legal action' → 🚨 HIGH RISK: You lose legal protection"
     },
     {
@@ -437,7 +420,7 @@ const Index = () => {
                 Analyze contracts, spot risks, and make informed decisions.
               </p>
               <p className="text-gray-400 text-sm">
-                Made with ❤️ by the GenDoc Team
+                Made with ❤ by the GenDoc Team
               </p>
             </div>
             
