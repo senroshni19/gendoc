@@ -62,18 +62,23 @@ const Index = () => {
   const testimonials = [
     {
       quote: "I finally understood what I was signing. Game changer!",
-      author: "Sarah M.",
-      role: "Freelancer"
+      author: "Mrinmoy Paul",
+      role: "SDE at Airtle LLP"
     },
     {
       quote: "Saved me from a terrible rental agreement. The risk detection is spot-on.",
-      author: "Mike R.",
+      author: "Sayantika Saha",
       role: "Student"
     },
     {
       quote: "Our small business uses this for all contracts now. Essential tool!",
-      author: "Jennifer L.",
-      role: "Small Business Owner"
+      author: "Sanjeev Mohanty.",
+      role: "Business Owner"
+    },
+    {
+      quote: " This tool made our document reviews 5× faster. The risk tags helped us flag issues before legal even stepped in",
+      author: " Abhishek Banerjee",
+      role: " Product Manager at TCS"
     }
   ];
 
@@ -415,6 +420,7 @@ const Index = () => {
                 Making legal documents accessible and understandable for everyone. 
                 Analyze contracts, spot risks, and make informed decisions.
               </p>
+
               
             </div>
             
