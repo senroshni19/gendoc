@@ -415,9 +415,7 @@ const Index = () => {
                 Making legal documents accessible and understandable for everyone. 
                 Analyze contracts, spot risks, and make informed decisions.
               </p>
-              <p className="text-gray-400 text-sm">
-                Made with ❤ by the GenDoc Team
-              </p>
+              
             </div>
             
             <div>
