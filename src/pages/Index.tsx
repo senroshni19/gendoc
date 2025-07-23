@@ -74,12 +74,8 @@ const Index = () => {
       quote: "Our small business uses this for all contracts now. Essential tool!",
       author: "Sanjeev Mohanty.",
       role: "Business Owner"
-    },
-    {
-      quote: " This tool made our document reviews 5× faster. The risk tags helped us flag issues before legal even stepped in",
-      author: " Abhishek Banerjee",
-      role: " Product Manager at TCS"
     }
+    
   ];
 
   const useCases = [
