@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import RedAlert from '@/components/ui/red-alert';
+import { useEffect } from 'react';
 
 const Index = () => {
   const [demoText, setDemoText] = useState("");
@@ -13,7 +14,9 @@ const Index = () => {
   const [showAnalysis, setShowAnalysis] = useState(false);
   const [resultData, setresultData] = useState("");
   const [alertData, setalertData] = useState("");
-
+  useEffect(() => {
+    console.log("Component mounted");
+  }, []);
   const handleDemoAnalysis = async () => {
     console.log("Loading...")
     setShowAnalysis(true);
