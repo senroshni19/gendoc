@@ -10,7 +10,7 @@ const Index = () => {
   const [demoText, setDemoText] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
-  const [resultData, setresultData] = useState<string>("");
+  const [resultData, setresultData] = useState("");
 
   const handleDemoAnalysis = async () => {
     console.log("Loading...")
@@ -23,7 +23,7 @@ const Index = () => {
           {
             "parts": [
               {
-                "text" : "Simplyfy this text" + demoText
+                "text" : "Simplyfy this text make it hardly 3 to 5 lines" + demoText
               }
             ]
           }
@@ -193,7 +193,7 @@ const Index = () => {
                   <CardDescription>Plain English explanation</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {showAnalysis ? (<p> {resultData} </p>) : ( <p> No data</p>) }
+                  {showAnalysis ? (<p> {resultData} </p>) : ( <p>Please provide the text you would like me to simplify. I need the text to be able to help you.</p>) }
                 </CardContent>
               </Card>
             </div>
