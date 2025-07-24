@@ -5,12 +5,14 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
+import RedAlert from '@/components/ui/red-alert';
 
 const Index = () => {
   const [demoText, setDemoText] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
-  const [resultData, setresultData] = useState<string>("");
+  const [resultData, setresultData] = useState("");
+  const [alertData, setalertData] = useState("");
 
   const handleDemoAnalysis = async () => {
     console.log("Loading...")
@@ -31,8 +33,29 @@ const Index = () => {
       }
     })
 
+    const alertResponse = await axios ({
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
+      method: "post",
+      data: {
+        "contents": [
+          {
+            "parts": [
+              {
+                "text": "write what should be warned about in this message in hardly 2 lines and remove all the **" + demoText
+              }
+            ]
+          }
+        ]
+      }
+    })
+
+    console.log(alertResponse);
+    console.log(response);
     const result = response.data.candidates[0].content.parts[0].text;
+    const alertResult = alertResponse.data.candidates[0].content.parts[0].text;
     setresultData(result);
+    setalertData(alertResult);
+
   };
 
   const features = [
@@ -195,10 +218,13 @@ const Index = () => {
                 <CardContent>
                   {showAnalysis ? (<p> {resultData} </p>) : ( <p> No data</p>) }
                 </CardContent>
+                <RedAlert>
+                  {alertData}
+                </RedAlert>
               </Card>
             </div>
           </div>
-        </div>
+        </div>S
       </section>
 
       {/* Upload Section */}
