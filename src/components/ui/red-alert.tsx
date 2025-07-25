@@ -10,8 +10,8 @@ const RedAlert = ({children}) => {
       </div>
       
       {/* Alert container */}
-      <div className="border-2 border-red-500 bg-red-50 rounded-lg p-4 pt-6">
-        <div className="text-red-700">
+      <div className=" bg-red-50 rounded-lg p-4 pt-6">
+        <div className="text-white-700">
           <p className="font-medium text-sm">
             {children}
           </p>
