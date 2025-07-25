@@ -10,8 +10,9 @@ const RedAlert = ({children}) => {
       </div>
       
       {/* Alert container */}
-      <div className=" bg-red-50 rounded-lg p-4 pt-6">
-        <div className="text-white-700">
+      <div className="bg-white rounded-lg p-4 pt-6">
+        {/* Main border that merges with the icon's border */}
+        <div className="text-red-700">
           <p className="font-medium text-sm">
             {children}
           </p>
