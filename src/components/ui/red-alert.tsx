@@ -1,6 +1,8 @@
 import React, { Children } from 'react';
 import { AlertTriangle } from 'lucide-react';
 
+
+
 const RedAlert = ({children}) => {
   return (
     <div className="relative max-w-md mt-6">
