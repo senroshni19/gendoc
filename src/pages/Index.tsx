@@ -11,8 +11,8 @@ const Index = () => {
   const [demoText, setDemoText] = useState("");
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [showAnalysis, setShowAnalysis] = useState(false);
-  const [resultData, setresultData] = useState("");
-  const [alertData, setalertData] = useState("");
+  const [resultData, setresultData] = useState(""); // this state contain the simplified text
+  const [alertData, setalertData] = useState(""); // this state contain the red alert state
 
   const handleDemoAnalysis = async () => {
     console.log("Loading...")
@@ -216,15 +216,13 @@ const Index = () => {
                   <CardDescription>Plain English explanation</CardDescription>
                 </CardHeader>
                 <CardContent>
-                  {showAnalysis ? (<p> {resultData} </p>) : ( <p> No data</p>) }
+                  {showAnalysis ? (<p> {resultData} </p>) : ( <p></p>) }
                 </CardContent>
-                <RedAlert>
-                  {alertData}
-                </RedAlert>
+                {alertData ? (<RedAlert> {alertData} </RedAlert>) : (<p></p>)}
               </Card>
             </div>
           </div>
-        </div>S
+        </div>
       </section>
 
       {/* Upload Section */}
