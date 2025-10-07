@@ -7,6 +7,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { Badge } from '@/components/ui/badge';
 import RedAlert from '@/components/ui/red-alert';
 import { useEffect } from 'react';
+import DropZoneComponent from './Dropzonecomponent';
 
 const Index = () => {
   const [demoText, setDemoText] = useState("");
@@ -19,7 +20,7 @@ const Index = () => {
     console.log("Loading...")
     setShowAnalysis(true);
     const response = await axios({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCjCTaeAW8ndlCkyoRyUdNyhNxbC7HBvz4",
       method: "post",
       data: {
         "contents" : [
@@ -35,7 +36,7 @@ const Index = () => {
     })
 
     const alertResponse = await axios ({
-      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyAD8UqCmYbEDg8DrhXLAtOu0I65QQwUAJg",
+      url: "https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=AIzaSyCjCTaeAW8ndlCkyoRyUdNyhNxbC7HBvz4",
       method: "post",
       data: {
         "contents": [
@@ -236,29 +237,9 @@ const Index = () => {
             </p>
           </div>
           
-          <div className="max-w-4xl mx-auto">
-            <Card className="border-2 border-dashed border-blue-300 bg-white/50 hover:border-blue-400 transition-colors">
-              <CardContent className="p-12">
-                <div className="text-center">
-                  <Upload className="h-16 w-16 text-blue-500 mx-auto mb-6" />
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                    Drop your document here
-                  </h3>
-                  <p className="text-gray-600 mb-6">
-                    Supports PDF, TXT, and DOCX files up to 10MB
-                  </p>
-                  <div className="flex flex-col sm:flex-row gap-4 justify-center">
-                    <Button className="bg-blue-500 hover:bg-blue-600">
-                      <Upload className="mr-2 h-4 w-4" />
-                      Choose File
-                    </Button>
-                    <Button variant="outline">
-                      Paste Text Instead
-                    </Button>
-                  </div>
-                </div>
-              </CardContent>
-            </Card>
+          <div>
+            <DropZoneComponent />
+
           </div>
         </div>
       </section>
